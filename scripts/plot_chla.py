@@ -26,7 +26,7 @@ MAPBOX_KEY = mapbox.mapbox_id
 ################ SATELLITE CHL-A ####################
 #path = "./Data/or_detroit_lake_dashboard/proc_dashboard_data/"
 #path = "./Data/tx_cedar_creek_reservoir_dashboard/proc_dashboard_data/"
-path = "/tmp/nj_woodcliff_lake/proc_dashboard_data/"
+path = "/tmp/nj_woodcliff_lake_dashboard/proc_dashboard_data/"
 files = sorted(glob.glob(path+"satellite_map/*.csv"))
 
 ##! find colorbounds
