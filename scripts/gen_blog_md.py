@@ -69,7 +69,7 @@ def gen_blog(lake_name):
 
 if __name__ == "__main__":
 
-  # git@github.com:ClearWaterAnalytica/oradell_reports.git
+  # git@github.com:ClearWaterAnalytica/nj_woodcliff_reports.git
   lake_name = 'nj_woodcliff_lake'
 
   zip_dir = f"clw-us/{lake_name}/misc/dashboard_zip/{lake_name}_dashboard.zip"
