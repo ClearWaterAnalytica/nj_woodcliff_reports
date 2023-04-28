@@ -87,7 +87,7 @@ title = "CyAN (cells per ml): " + date_time
 
 fig = ff.create_hexbin_mapbox(
     data_frame=df, lat="y", lon="x", color="z",
-    nx_hexagon=20, opacity=0.5,
+    nx_hexagon=5, opacity=0.5,
 	range_color=[6000,100000],
 	labels={"color": "Cells/ml"},agg_func=np.mean,color_continuous_scale="jet")
 fig.update_layout(title_text=title,title_y=0.92,title_x=0.2)
