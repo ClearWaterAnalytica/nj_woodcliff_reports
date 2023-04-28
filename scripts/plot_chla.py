@@ -93,7 +93,7 @@ title = "Chlorophyll-a Index (Sentinel 2a): " + date_time
 
 fig = ff.create_hexbin_mapbox(
     data_frame=df, lat="y", lon="x", color="z",
-    nx_hexagon=70, opacity=0.5, 
+    nx_hexagon=10, opacity=0.5, 
 	range_color=[0.31, 1.8],
 	labels={"color": "Chl-a Index"},agg_func=np.mean,color_continuous_scale="jet")
 
