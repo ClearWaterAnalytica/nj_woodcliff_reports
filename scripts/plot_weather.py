@@ -3,7 +3,7 @@ import pandas as pd
 import glob
 import matplotlib.pyplot as plt
 import seaborn as sns
-from datetime import date
+from datetime import date, datetime
 import botocore.session
 import s3fs
 

@@ -50,7 +50,7 @@ rvb = make_colormap(
 # pwd = path+"now_cast_tab/"
 # data = pd.read_csv(pwd + "nj_woodcliff_lake_nowcast_multiclass_predictions_current.csv",parse_dates=["date"])
 
-data = pd.read_csv(f"s3://cwa-assets/nj_woodcliff_lake/assets/now_cast_tab/nj_woodcliff_lake_nowcast_predictions_current.csv", parse_dates=['date'])
+data = pd.read_csv(f"s3://cwa-assets/nj_woodcliff_lake/assets/now_cast_tab/nj_woodcliff_lake_nowcast_multiclass_predictions_current.csv", parse_dates=['date'])
 
 
 lag = 14 #number of days to look behind

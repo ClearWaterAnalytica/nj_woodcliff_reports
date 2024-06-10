@@ -72,7 +72,7 @@ files = sorted(s3.glob(f"s3://cwa-assets/nj_woodcliff_lake/assets/satellite_map/
 #chl_max = np.percentile(chl_max,95)
 
 #! Latest data
-data = pd.read_csv(f"{files[-1]}",parse_dates=["date"])
+data = pd.read_csv(f"s3://{files[-1]}",parse_dates=["date"])
 data["month"] = data["date"].dt.month
 data["week"] = data["date"].dt.week
 data["year"] = data["date"].dt.year
@@ -84,7 +84,7 @@ lons = data["lon"]
 lats = data["lat"]
 df = data.copy()
 for i in np.arange(-X,-1):
-    df1 = pd.read_csv(f"{files[i]}",parse_dates=["date"])
+    df1 = pd.read_csv(f"s3://{files[i]}",parse_dates=["date"])
     df["Chlorophyll"] = (df["Chlorophyll"] + griddata((df1["lon"],df1["lat"]), df1["Chlorophyll"], 
             (lons, lats), method='nearest')) / 2
 
