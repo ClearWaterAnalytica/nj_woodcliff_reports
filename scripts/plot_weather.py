@@ -4,16 +4,41 @@ import glob
 import matplotlib.pyplot as plt
 import seaborn as sns
 from datetime import date
+import botocore.session
+import s3fs
+
+session = botocore.session.get_session()
+AWS_SECRET = session.get_credentials().secret_key
+AWS_ACCESS_KEY = session.get_credentials().access_key 
+
+s3 = s3fs.S3FileSystem(anon=False, key=AWS_ACCESS_KEY, secret=AWS_SECRET)
+
 today = date.today()
+today = date.today()
+current_year = datetime.now().year
+lake_name = "nj_woodcliff_lake"
+
+lst_ = []
+for year_ in range(2010, current_year + 1):
+	print(year_)
+	df = pd.read_csv(f"s3://cwa-assets/{lake_name}/assets/weather_tab/{lake_name}_gridmet_{year_}.csv", parse_dates=["date"])
+	lst_.append(df)
+
+data = pd.concat(lst_)
+today = date.today()
+
+data = data.drop_duplicates().reset_index(drop=True)
 
 
 
 ### CUMSUM WEATHER ###
 #path = "./Data/or_detroit_lake_dashboard/proc_dashboard_data/"
-path = "/tmp/nj_woodcliff_lake_dashboard/proc_dashboard_data/"
-pwd = path+"weather_tab/"
+# path = "/tmp/nj_woodcliff_lake_dashboard/proc_dashboard_data/"
+# pwd = path+"weather_tab/"
 #data = pd.read_csv(pwd + "or_detroit_lake_gridmet.csv",parse_dates=["date"])
-data = pd.read_csv(pwd + "nj_woodcliff_lake_gridmet.csv",parse_dates=["date"])
+# data = pd.read_csv(pwd + "nj_woodcliff_lake_gridmet.csv",parse_dates=["date"])
+
+
 #files = glob.glob("./Data/proc_dashboard_data/weather_tab/*.csv")
 #data = pd.read_csv(files[0],parse_dates=["date"])
 data["month"] = data["date"].dt.month
