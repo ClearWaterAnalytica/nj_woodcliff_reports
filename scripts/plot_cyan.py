@@ -100,20 +100,45 @@ some_lat = 41.01903760731674
 some_lon = -74.0446324744165
 
 fig = ff.create_hexbin_mapbox(
-    data_frame=df, lat="y", lon="x", color="z",
-    nx_hexagon=5, opacity=0.5,
+    data_frame=df,
+    lat="y",
+    lon="x",
+    color="z",
+    # hex_size=1000,  # Approximate diameter of hexagons in meters
+    nx_hexagon=len(y),
+    opacity=0.5,
     range_color=[6000, 100000],
-    labels={"color": "Cells/ml"}, agg_func=np.mean, color_continuous_scale="jet"
+    labels={"color": "Cells/ml"},
+    agg_func=np.mean,
+    color_continuous_scale="jet"
 )
 fig.update_layout(
-    title_text=title, title_y=0.92, title_x=0.2,
+    title_text=title,
+    title_y=0.92,
+    title_x=0.2,
     mapbox=dict(
         style="satellite",
-        zoom=13,  # Adjust this value to zoom out (lower values mean more zoomed out)
+        zoom=11,  # Adjust this value to zoom out (lower values mean more zoomed out)
         center=dict(lat=some_lat, lon=some_lon)  # Replace with the center of your data
     )
 )
-fig.write_image("Figs/Fig_cyan.png", scale=1)
+fig.write_image("Figs/Fig_cyan.png", scale=1) 
+
+#fig = ff.create_hexbin_mapbox(
+#     data_frame=df, lat="y", lon="x", color="z",
+#     nx_hexagon=5, opacity=0.5,
+#     range_color=[6000, 100000],
+#     labels={"color": "Cells/ml"}, agg_func=np.mean, color_continuous_scale="jet"
+# )
+# fig.update_layout(
+#     title_text=title, title_y=0.92, title_x=0.2,
+#     mapbox=dict(
+#         style="satellite",
+#         zoom=13,  # Adjust this value to zoom out (lower values mean more zoomed out)
+#         center=dict(lat=some_lat, lon=some_lon)  # Replace with the center of your data
+#     )
+# )
+# fig.write_image("Figs/Fig_cyan.png", scale=1)
 # fig.show()
 
 
